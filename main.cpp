@@ -13,11 +13,13 @@ int main() {
 	while (!window.should_close()) {
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		auto projection = glm::perspective(1.0, 1.0, 1.0, 1.0);
+		auto aspectRatio = static_cast<double>(window.get_width()) / static_cast<double>(window.get_height());
 
-		auto modelView = glm::mat4(1.0);
+		auto projection = glm::perspective(1.047, aspectRatio, 0.01, 1000.0);
 
-		quad.draw();
+		auto modelView = glm::translate(glm::mat4(1.0), glm::vec3(0.0, 0.0, -10.0));
+
+		quad.draw(projection, modelView);
 
 		window.swap_buffers();
 
@@ -63,6 +65,14 @@ void Window::swap_buffers() {
 	glfwSwapBuffers(window);
 }
 
+int Window::get_width() {
+	return width;
+}
+
+int Window::get_height() {
+	return height;
+}
+
 void Window::center() {
 	auto monitor = glfwGetPrimaryMonitor();
 	auto videoMode = glfwGetVideoMode(monitor);
@@ -80,6 +90,9 @@ void Window::center() {
 
 		glfwGetWindowSize(window, &width, &height);
 		glfwGetMonitorWorkarea(monitor, &workarea.x, &workarea.y, &workarea.width, &workarea.height);
+
+		this->width = width;
+		this->height = height;
 
 		glfwSetWindowMonitor(window, nullptr, 
 			(workarea.width - width) / 2, 

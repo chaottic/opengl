@@ -5,9 +5,6 @@
 
 #include <exception>
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-
 class Context final {
 public:
 
@@ -27,8 +24,15 @@ public:
 
 	void swap_buffers();
 
+	int get_width();
+
+	int get_height();
+
 private:
 	GLFWwindow* window;
+
+	int width;
+	int height;
 
 	void center();
 };

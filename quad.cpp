@@ -32,6 +32,9 @@ Quad::Quad() {
 	glUseProgramStages(pipeline, GL_VERTEX_SHADER_BIT, vertex);
 	glValidateProgramPipeline(pipeline);
 
+	projectionUniform = glGetUniformLocation(vertex, "projection");
+	modelViewUniform = glGetUniformLocation(vertex, "modelView");
+
 	float vertices[] = {
 		-0.5F, -0.5F, 0.0F, 1.0F,
 		 0.5F, -0.5F, 0.0F, 1.0F,
@@ -56,8 +59,11 @@ Quad::Quad() {
 	glVertexArrayElementBuffer(vao, ebo);
 }
 
-void Quad::draw() {
+void Quad::draw(const glm::mat4& projection, const glm::mat4& modelView) {
 	glBindProgramPipeline(pipeline);
+
+	glProgramUniformMatrix4fv(vertex, projectionUniform, 1, false, &projection[0][0]);
+	glProgramUniformMatrix4fv(vertex, modelViewUniform, 1, false, &modelView[0][0]);
 
 	glBindVertexArray(vao);
 

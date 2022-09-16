@@ -8,8 +8,16 @@ int main() {
 		throw std::exception("Failed to initialize GLEW");
 	}
 
+	Quad quad;
+
 	while (!window.should_close()) {
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		auto projection = glm::perspective(1.0, 1.0, 1.0, 1.0);
+
+		auto modelView = glm::mat4(1.0);
+
+		quad.draw();
 
 		window.swap_buffers();
 

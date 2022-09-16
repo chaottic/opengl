@@ -20,9 +20,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.hpp" />
+    <ClInclude Include="quad.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="quad.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="quad_fragment.glsl" />
+    <None Include="quad_vertex.glsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

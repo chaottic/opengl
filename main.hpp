@@ -27,4 +27,6 @@ public:
 
 private:
 	GLFWwindow* window;
+
+	void center();
 };

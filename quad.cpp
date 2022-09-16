@@ -26,7 +26,7 @@ Quad::Quad() {
 
 	glCreateProgramPipelines(1, &pipeline);
 	fragment = createShaderProgram(GL_FRAGMENT_SHADER, read("quad_fragment.glsl"));
-	vertex = createShaderProgram(GL_FRAGMENT_SHADER, read("quad_vertex.glsl"));
+	vertex = createShaderProgram(GL_VERTEX_SHADER, read("quad_vertex.glsl"));
 
 	glUseProgramStages(pipeline, GL_FRAGMENT_SHADER_BIT, fragment);
 	glUseProgramStages(pipeline, GL_VERTEX_SHADER_BIT, vertex);

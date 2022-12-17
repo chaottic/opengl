@@ -21,10 +21,12 @@
   <ItemGroup>
     <ClInclude Include="main.hpp" />
     <ClInclude Include="quad.hpp" />
+    <ClInclude Include="window.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="quad.cpp" />
+    <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="quad_fragment.glsl" />
